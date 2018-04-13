@@ -2,13 +2,13 @@ import React from 'react'
 import axios from 'axios'
 
 const TrailList = (props) => {
-    // const get = (p, o) => {
-    //   p.reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, o);
-    //   console.log('Test:', get(['trails', 'trails', 0, 'name'], props));
-    // }
-  var {trails: {trails}} = props
-  console.log('Test2:', trails) //returns an array of objects
-  return null
+    console.log('Props:', props)
+    if (props.trails.length > 0) {
+      let trail = props.trails[0]
+      console.log('Trail:', trail)
+      return ( <h1>{trail.name}</h1> )
+    }
+return ( <h1>Hello!</h1> )
 }
 
 class Form extends React.Component {
@@ -56,7 +56,7 @@ class App extends React.Component {
   state = { trails: [] }
 
   addNewTrail = trailInfo => {
-    this.setState({trails: trailInfo})
+    this.setState({trails: trailInfo.trails})
 }
 
   render() {
